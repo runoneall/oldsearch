@@ -24,13 +24,11 @@ def search():
                     'noResult.html', 
                     target_search=query,
                 )
-            # max_page = crawler.GetMaxPage(f'q={query}')
             return render_template(
                 'search.html', 
                 target_search=query, 
                 info_dict=info_dict, 
-                info_dict_keys=list(info_dict.keys()),
-                # max_page=max_page
+                info_dict_keys=list(info_dict.keys())
             )
         else:
             return "参数错误"
