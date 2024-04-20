@@ -45,13 +45,6 @@ def Get_Links(query_str:str):
         h_div = one_result.find('div', {'class': 'b_caption'})
         h_p = h_div.find('p', {'class': 'b_algoSlug'})
         info_dict[site_title]['info'] = h_p.text[2:]
-
-    # # Write To File
-    # with open('result.html', 'w', encoding='utf-8') as html_file:
-    #     html_file.write(html)
-    # with open("search_info.json", "w", encoding="utf-8") as search_info:
-    #     json.dump(info_dict, search_info, ensure_ascii=False, indent=4)
-
     return info_dict
 
 def GetMaxPage(query_str:str):
@@ -74,5 +67,4 @@ def GetMaxPage(query_str:str):
     soup_maxli = BeautifulSoup(max_li, 'html.parser')
     h_a = soup_maxli.find('a')
     max_page = int(h_a.get('aria-label')[2])
-    # print(max_page)
     return max_page
