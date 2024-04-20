@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>没有任何结果</title>
+    <style>
+        #search_input {
+            border: 2px solid;
+            width: 400px;
+            height: 20px;
+        }
+        #submit {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="logo" alt="Logo">
+        <form action="/search" method="post">
+            <input type="text" id="search_input" name="search_input" value="{{ target_search }}" placeholder="搜索内容" required>
+            <input type="submit" id="submit" value="搜索">
+        </form>
+    </div><br><br>
+    没有任何结果
+</body>
