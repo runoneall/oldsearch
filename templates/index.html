@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Old Search</title>
+    <style>
+        .container {
+            position: relative;
+            height: 92vh; /* 设置容器高度为视口高度 */
+        }
+        .center { 
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%); /* 向上移动自身高度的一半 */
+        }
+        #search_input {
+            border: 2px solid;
+            width: 500px;
+            height: 20px;
+        }
+        #submit {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+            <img src="logo" alt="Logo">
+            <form action="/search" method="post">
+                <input type="text" id="search_input" name="search_input" placeholder="搜索内容" required>
+                <input type="submit" id="submit" value="搜索">
+            </form>
+        </div>
+    </div>
+    <h4 style="text-align: right;">
+        我们同时还开放了API搜索模式, 点击
+        <a href="/api" style="color: blue;">这里</a>
+        查看使用文档
+    </h4>
+</body>
+</html>
