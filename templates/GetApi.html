@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <title>Api 使用文档</title>
+    <style>
+        strong {
+            color: black;
+            background-color: yellow;
+        }
+        a {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Api 使用文档</h1>
+    <h4>开始之前你需要Api使用账号, 到
+        <a href="/api-user/login">这里</a>
+        登录账号或到
+        <a href="/api-user/signin">这里</a>
+        注册账号
+    </h4>
+    <h2><strong>请求: </strong></h2>
+    <ul>
+        <li>请求地址: <strong>*/api</strong></li>
+        <li>请求协议: <strong>POST</strong></li>
+        <li>请求头: <strong>Content-Type:application/json</strong></li>
+        <li>请求数据格式: <strong>Json</strong></li>
+        <li>
+            请求数据字段: <br>
+            <strong>search</strong> 必填, 指定搜索内容, 字符串类型<br>
+            <strong>user</strong> 必填, 用户名, 用于验证, 字符串类型<br>
+            <strong>key</strong> 必填, 用于验证的Key, 字符串类型<br>
+        </li>
+        <li>
+            Python 代码示例: <br>
+            <pre><code class="python">
+import requests
+import json
+api_url = 'http://oldsearch.xserver.rr.nu/api'
+data = {
+    'search': 'Python Flask', 
+    'user': [Your User Name], 
+    'key': [Your Auth Key]
+}
+header = {
+    'Content-Type': 'application/json'
+}
+response = requests.post(url, json=json.dumps(data), headers=header)
+print(response.content.decode('utf-8'))
+            </code></pre>
+        </li>
+    </ul>
+    <hr style="width: 70%;">
+    <h2><strong>响应: </strong></h2>
+    <ul>
+        <li>
+            正常响应: <br>
+            <pre><code class="json">
+// 一条结果示例, 正常有十条结果
+{
+    "Welcome to Flask — Flask Documentation (3.0.x)": {
+        "domain": "flask.palletsprojects.com",
+        "info": "... Flask itself, look for community-maintained extensions to add even more functionality. Installation · Python Version · Dependencies · Virtual environments ...",
+        "full_url": "https://flask.palletsprojects.com/"
+    }
+}
+            </code></pre>
+        </li>
+        <li>
+            错误响应: <br>
+            <ul>
+                <li>
+                    <strong>'Info' 为 'Invalid Content Type'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Invalid Content Type'
+}
+                    </code></pre>
+                    检查 'content_type' 是否为 'application/json'
+                </li><br>
+                
+                <li>
+                    <strong>'Info' 为 'Invalid Parameter'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Invalid Parameter'
+}
+                    </code></pre>
+                    检查 'search', 'user', 'key' 是否同时指定
+                </li><br>
+
+                <li>
+                    <strong>'Info' 为 'Invalid Type'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Invalid Type'
+}
+                    </code></pre>
+                    检查 'search', 'user', 'key' 是否为字符串类型
+                </li><br>
+
+                <li>
+                    <strong>'Info' 为 'Unknow User'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Unknow User'
+}
+                    </code></pre>
+                    检查是否指定了正确的用户名
+                </li><br>
+
+                <li>
+                    <strong>'Info' 为 'Not Allowed User'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Not Allowed User'
+}
+                    </code></pre>
+                    检查是否指定了正确的用户名, 或者该用户已被封禁
+                </li><br>
+
+                <li>
+                    <strong>'Info' 为 'Auth Failed'</strong> <br>
+                    <pre><code class="json">
+{
+    'state': 'Error', 
+    'info': 'Auth Failed'
+}
+                    </code></pre>
+                    该用户名与认证Key不匹配
+                </li><br>
+
+            </ul>
+        </li>
+    </ul>
+    <script>hljs.highlightAll();</script>
+</body>

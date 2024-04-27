@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        HeightLight {
+            color: black;
+            background-color: yellow;
+        }
+        strong {
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+    <h1>用户信息</h1>
+    <table>
+        <tr>
+            <td><li><strong>用户名</strong></li></td>
+            <td><strong><HeightLight>{{ user_info['User'] }}</HeightLight></strong></td>
+        </tr>
+        <tr>
+            <td><li><strong>密码</strong></li></td>
+            <td><strong><HeightLight>{{ user_info['Pwd'] }}</HeightLight></strong></td>
+        </tr>
+        <tr>
+            <td><li><strong>认证Key</strong></li></td>
+            <td><strong><HeightLight>{{ user_info['Key'] }}</HeightLight></strong></td>
+        </tr>
+    </table>
+    <br>
+    <h1><a style="color: blue;", href="/api">Api使用文档</a></h1>
+</body>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>{{ target_search }}</title>
+    <style>
+        .result-box {
+            width: 70%;
+            border:1px solid black;
+        }
+        #search_input {
+            border: 2px solid;
+            width: 400px;
+            height: 20px;
+        }
+        #submit {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="logo" alt="Logo">
+        <form action="/search" method="post">
+            <input type="text" id="search_input" name="search_input" value="{{ target_search }}" placeholder="搜索内容" required>
+            <input type="submit" id="submit" value="搜索">
+        </form>
+    </div><br><br>
+    {%- for dict_key in info_dict_keys -%}
+        <div class="result-box">
+            <strong style="
+                color: black;
+                background: yellow;
+            ">{{ info_dict[dict_key]['domain'] }}</strong>
+            <h2><strong> <a href="{{ info_dict[dict_key]['full_url'] }}" style="color: blue;">{{ dict_key }}</a> </strong></h2>
+            <p>{{ info_dict[dict_key]['info'] }}</p>
+        </div><br>
+    {%- endfor -%}
+</body>

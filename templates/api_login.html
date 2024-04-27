@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 用户登录</title>
+    <style>
+        table {
+          border-collapse: collapse;
+        }
+        th, td {
+          border: none;
+          text-align: left;
+          padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>API 用户登录</h1>
+    <form action="/api-user/login" method="post">
+        <table>
+            <tr>
+                <td><label for="username">用户名</label></td>
+                <td><input type="text" id="username" name="username" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">密码</label></td>
+                <td><input type="password" id="password" name="password" required></td>
+                <td><input type="submit" value="登录"></td>
+            </tr>
+        </table>
+    </form>
+    <br><br>
+    <h2>没有账户? <a href="/api-user/signin">去注册</a></h2>
+</body>
+</html>
